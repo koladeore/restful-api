@@ -1,9 +1,9 @@
 import model from '../database/models';
-
 const { User } = model;
 
 class Users {
     static signUp(req,res) {
+        console.log('signup');
         try {
             const {name, username, email, password } =  req.body
             console.log(req.body);

@@ -10,6 +10,10 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+const API_VERSION = '/api/v1';
+app.use(`${API_VERSION}`, router);
+
+
 app.get('/', (req,res) => {
     res.status(200).send('The api is working');
 })
@@ -21,7 +25,5 @@ const { PORT } = process.env
 app.listen(PORT, () => {
     console.log(`server is running on ${PORT}`);
 })
-const API_VERSION = '/api/v1';
-app.use(`${API_VERSION}`, router);
 
 export default app;
