@@ -45,10 +45,60 @@ const isValidPassword = (field = 'password') => check(field).isLength({ min: 8, 
     .isAlphanumeric()
     .withMessage(`${field} should contain only numbers and a alphabets`);
 
+const checkTitle = (field = 'title') => check(field)
+    .exists()
+    .withMessage(`${field} is a required field`)
+    .trim()
+    .isLength({ min: 2, max: 50 })
+    .withMessage(`${field} must be at least 2 characters, and maximum 50`)
+    .not()
+    .matches(/^[0-9]+([,.][0-9]+)?$/, 'g')
+    .withMessage(`${field} msut contain alphabets`)
+    .not()
+    .matches(/^[^a-zA-Z0-9]+$/, 'g')
+    .withMessage(`${field} must contain alphabets`)
+
+const checkDescription = (field = 'description') => check(field)
+    .optional()
+    .isLength({ min: 10 })
+    .withMessage(`${field} must be at least 10 characters`)
+    .not()
+    .matches(/^[0-9]+([,.][0-9]+)?$/, 'g')
+    .withMessage(`${field} msut contain alphabets`)
+    .not()
+    .matches(/^[^a-zA-Z0-9]+$/, 'g')
+    .withMessage(`${field} must contain alphabets`) 
+
+const checkAuthor = ( field = 'author' ) => check(field)
+    .exists()
+    .withMessage(`${field} is a required field`)
+    .trim()
+    .isLength({ min: 2, max: 50 })
+    .withMessage(`${field} must be at least 2 characters, and maximum 50`)
+    .not()
+    .matches(/^[0-9]+([,.][0-9]+)?$/, 'g')
+    .withMessage(`${field} msut contain alphabets`)
+    .not()
+    .matches(/^[^a-zA-Z0-9]+$/, 'g')
+    .withMessage(`${field} must contain alphabets`)
+
+const checkQuantity = ( field = 'quantity' ) => check(field)
+    .exists()
+    .withMessage(`${field} is a required field`)
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage(`${field} cannot be empty`)
+    .isInt()
+    .withMessage(`${field} must be an integer`);           
 export default {
     isValidName,
     isValidEmail,
     isValidUserName,
-    isValidPassword
+    isValidPassword,
+    checkTitle,
+    checkAuthor,
+    checkDescription,
+    checkQuantity
 }
     
