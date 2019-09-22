@@ -7,9 +7,12 @@ class Users {
         try {
             const {name, username, email, password } =  req.body
             console.log(req.body);
-            // const foundUser = findUser(email);
-            // if (foundUser  && foundUser.email.toString() === email){
-            //     return res.status(409).send('user with email already exists');
+            // User.findOne({ email: req.body.email })
+            // .exec()
+            // if (User.length >= 1) {
+            //     return res.status(409).json({
+            //       message: "Mail exists"
+            //     });
             // }
             return User.create({ name, username, email, password })
             .then(userData => res.status(201).send({sucess: true, message:'User successfully created', userData}))
