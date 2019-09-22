@@ -22,8 +22,8 @@ class Users {
         try {
             const {email, password } =  req.body
             console.log(req.body);
-            return User.create({ name, username, email, password })
-            .then(userData => res.status(201).send({sucess: true, message:'User successfully created', userData}))
+            return User.findOne({ where: {email, password} })
+            .then(userData => res.status(200).send({sucess: true, message:'User successfully login', userData}))
         }
         catch (error) {
             return response.status(500).send({ status: error, message:'Server Error' });

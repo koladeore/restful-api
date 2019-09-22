@@ -14,7 +14,13 @@ const userValidator = {
         isValidUserName('username'), 
         isValidPassword(),
         validatorError
+    ],
+    signInValidator: [
+        isValidEmail(),
+        isValidPassword(),
+        validatorError
     ]
 };
+
 
 export default userValidator;
