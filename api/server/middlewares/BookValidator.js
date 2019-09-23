@@ -10,8 +10,8 @@ const { validatorError } = errorHandler;
 const BookValidator = {
     bookValidator: [
         checkAuthor(),
-        checkDescription('name'),
-        checkTitle('username'), 
+        checkDescription('description'),
+        checkTitle('title'), 
         checkQuantity(),
         validatorError
     ]

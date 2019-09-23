@@ -2,10 +2,15 @@
   "name": "personnal-test",
   "version": "1.0.0",
   "description": "",
+  "heroku-postbuild": "npm install --production",
   "main": "index.js",
   "scripts": {
+    "heroku-postbuild": "npm run db:ready",
     "dev": "nodemon --exec babel-node ./api/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:ready": "npm run db:undo &&  npm run db:migrate",
+    "db:migrate": "sequelize db:migrate",
+    "db:undo": "sequelize db:migrate:undo:all"
   },
   "author": "kola",
   "license": "ISC",
