@@ -1,5 +1,8 @@
 import model from '../database/models';
+import helpers from '../helpers';
+
 const { User } = model;
+const { createToken, signupMessage, sendMail } = helpers;
 
 class Users {
     static async signUp(req,res) {
@@ -10,8 +13,12 @@ class Users {
                 return res.status(409).json({
                     message: "Mail exists"
                 });
-            }           
+            }         
             const newUser = await User.create({ name, username, email, password });
+            const { id } = newUser;
+            const token = createToken({ id }, '24h');
+            const message = signupMessage(name, token);
+            await sendMail(process.env.ADMIN_MAIL, email, message);
             return res.status(200).json({
                 success: true,
                 message: 'User successfully created',
@@ -19,7 +26,7 @@ class Users {
             });
         }
         catch (error) {
-            return response.status(500).send({ status: 500, message: error });
+            return res.status(500).json({ status: 500, message: error.message });
         }
     }
     static async signIn(req,res) {
