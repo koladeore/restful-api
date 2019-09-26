@@ -1,5 +1,5 @@
-const messageHeader = "<div style='width:600px;font-family: Arial,Helvetica,sans-serif; text-decoration: none; margin:auto; font-size: 14px;'><div style='background-color:rgba(23, 117, 147); color:#fff; padding:20px;text-align: center;font-size: 18px;'><span style='margin-right: 10px'>Hello Books</span></div><div style='padding:15px'>";
-const messageFooter = "<p style='margin-top:20px; margin-bottom:0px; color: rgb(106, 108, 111); line-height: 1.35em;'>Thank you,</p><p style='margin-top:0px; margin-bottom:5px; color: rgb(106, 108, 111); line-height: 1.35em;'>The Hello Books Team</p></div><div style='background-color:rgba(23, 117, 147); color:#fff; padding:7px'></div></div>";
+const messageHeader = "<div style='width:600px;font-family: Arial,Helvetica,sans-serif; text-decoration: none; margin:auto; font-size: 14px;'><div style='background-color:rgba(23, 117, 147); color:#fff; padding:20px;text-align: center;font-size: 18px;'><span style='margin-right: 10px'>RESTFUL API</span></div><div style='padding:15px'>";
+const messageFooter = "<p style='margin-top:20px; margin-bottom:0px; color: rgb(106, 108, 111); line-height: 1.35em;'>Thank you,</p><p style='margin-top:0px; margin-bottom:5px; color: rgb(106, 108, 111); line-height: 1.35em;'>KOLADE</p></div><div style='background-color:rgba(23, 117, 147); color:#fff; padding:7px'></div></div>";
 
 const signupMessage = (name, token) => {
     const message = {

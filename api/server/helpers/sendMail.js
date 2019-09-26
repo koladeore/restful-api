@@ -5,8 +5,8 @@ const sendMail = (senderMail, receiverMail, message) => {
     const msg = {
         to: receiverMail,
         from: senderMail,
-        subject: 'Welcome to book-app',
-        text: 'Hello Books',
+        subject: 'Welcome to book restful-api',
+        text: 'RESTFUL API',
         ...message
     };
     return sendgridMail.send(msg);
