@@ -13,3 +13,4 @@ const sendMail = (senderMail, receiverMail, message) => {
 };
 
 export default sendMail;
+
