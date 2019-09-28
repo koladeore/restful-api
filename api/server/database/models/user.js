@@ -13,10 +13,14 @@ export default (sequelize, DataTypes) => {
       password: {
         type: DataTypes.STRING,
       },
+      verified: { 
+        type:DataTypes.BOOLEAN,
+      },
     }, {});
     User.associate = (models) => {
       User.hasMany(models.Book, {
         foreignKey: 'userId',
+        onDelete: 'CASCADE'
       });
     };
   return User; 

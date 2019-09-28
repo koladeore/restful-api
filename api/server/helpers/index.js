@@ -4,6 +4,7 @@ import sendMail from './sendMail';
 import * as message from './message';
 import validators from './validator';
 import createToken from './createToken';
+import findUser from './findUser';
 
 const { signupMessage } = message;
 
@@ -13,5 +14,6 @@ export default {
     validators,
     sendMail,
     createToken,
-    signupMessage
+    signupMessage,
+    findUser
 }

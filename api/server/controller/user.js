@@ -44,6 +44,19 @@ class Users {
             return response.status(500).send({ status: error, message:'Server Error' });
         }
     }
+    static async verifyUser(request,response) {
+        const { verified, email } = request.userData;
+        try {
+            if (verified) {
+                return response.status(409).json({ message : 'user has already been verified'});
+            }
+            await User.update({ verified : true }, {where: { email }});
+            return response.status(200).json({ status: 'success', message:  'verification sucessful'});
+        }
+        catch(error){
+            return response.status(500).json({ message: error.message })
+        }
+    }
 }
 
 export default Users;

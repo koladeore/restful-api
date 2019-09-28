@@ -7,7 +7,7 @@ const signupMessage = (name, token) => {
             <p>Dear <span style='text-transform: capitalize;'>${name}</span>,</p>
             <p>We are happy to have you with us, you are receiving this mail as a confirmation that your signUp is successful.
             Verify your account by clicking the button below</p>
-            <p style='margin-top:20px;text-align:center'><a style='text-decoration:none;padding:10px;background:#33922f;color:#ffffff;border-radius:5px;' href='${process.env.SERVER_URL}/auth/verify?token=${token}'>Verify Account</a></p>
+            <p style='margin-top:20px;text-align:center'><a style='text-decoration:none;padding:10px;background:#33922f;color:#ffffff;border-radius:5px;' href='${process.env.SERVER_URL}/api/v1/api/users/verify?token=${token}'>Verify Account</a></p>
             ${messageFooter}
         `
     }
