@@ -1,5 +1,4 @@
 import models from '../database/models';
-import responsseMessage from './responseMessage';
 import responseMessage from './responseMessage';
 
 const { User } = models;
