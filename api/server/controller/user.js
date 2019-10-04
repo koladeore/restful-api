@@ -19,7 +19,7 @@ class Users {
             const token = createToken({ id }, '24h');
             const message = signupMessage(name, token);
             await sendMail(process.env.ADMIN_MAIL, email, message);
-            return res.status(200).json({
+            return res.status(201).json({
                 success: true,
                 message: 'User successfully created',
                 data: newUser
@@ -51,7 +51,7 @@ class Users {
                 return response.status(409).json({ message : 'user has already been verified'});
             }
             await User.update({ verified : true }, {where: { email }});
-            return response.status(200).json({ status: 'success', message:  'verification sucessful'});
+            return response.status(200).json({ status: 'success', message:  'verification successful'});
         }
         catch(error){
             return response.status(500).json({ message: error.message })

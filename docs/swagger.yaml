@@ -206,10 +206,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserInput'
+              $ref: '#/components/schemas/userInput'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/UserInput'
+              $ref: '#/components/schemas/userInput'
         required: true
       responses:
         201:
@@ -217,7 +217,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserInput'
+                $ref: '#/components/schemas/userInput'
         401:
           description: unauthorized
         403:
@@ -226,20 +226,20 @@ paths:
           description: resource already exists
         500:
           description: internal server error
-  /users/sigin:
+  /users/signin:
     post:
       tags:
         - user
-      summary: singing a user.
+      summary: sign in a user.
       requestBody:
         description: fields containing user data
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserInput'
+              $ref: '#/components/schemas/UserLoginInput'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/UserInput'
+              $ref: '#/components/schemas/UserLoginInput'
         required: true
       responses:
         201:
@@ -247,7 +247,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserInput'
+                $ref: '#/components/schemas/UserLoginInput'
         401:
           description: unauthorized
         403:
@@ -255,9 +255,7 @@ paths:
         409:
           description: resource already exists
         500:
-          description: internal server error        
-
-  /users/:       
+          description: internal server error              
 components:
   schemas:
       BookInput:
@@ -304,8 +302,8 @@ components:
         properties:
           email:
             type: string
-            example: johndoe@email.com
+            example: johnson@gmail.com
           password:
             type: string
-            example: Flyplanex22
+            example: Fitly22
     
