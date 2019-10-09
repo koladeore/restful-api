@@ -11,6 +11,7 @@ import path from 'path';
 const app = express();
 
 dotenv.config();
+
 app.use(logger('dev'));
 const { PORT } = process.env;
 

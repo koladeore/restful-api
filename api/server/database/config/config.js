@@ -1,25 +1,17 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
 
-module.exports = {
-  development: {
-    username: process.env.DATABASE_USERNAME,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE_DEV,
-    host: process.env.DATABASE_HOST,
-    port: process.env.DATABASE_PORT,
-    dialect: 'postgres',
-    logging: false,
-  },
-  test: {
-    username: process.env.DATABASE_USERNAME,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE_DEV,
-    host: process.env.DATABASE_HOST,
-    port: process.env.DATABASE_PORT,
-    dialect: 'postgres',
-  },
-  production: {
-    use_env_variable: 'DATABASE_URL',
-    dialect: 'postgres'
-  },
+dotenv.config();
+
+export const development = {
+  use_env_variable: 'DATABASE_DEV',
+  logging: false
 };
+export const test = {
+  use_env_variable: 'DATABASE_TEST',
+  logging: false
+};
+export const production = {
+  use_env_variable: 'DATABASE_URL'
+};
+
+
