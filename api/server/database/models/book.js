@@ -13,14 +13,14 @@ export default (sequelize, DataTypes) => {
       quantity: { type: DataTypes.INTEGER },
       userId: {
         type: DataTypes.INTEGER,
-        references: { model: 'User', key: 'id', as: 'userId', }
-      }
+        references: { model: 'User', key: 'id', as: 'userId' },
+      },
     },
     {});
   Book.associate = (models) => {
     Book.belongsTo(models.User, {
       foreignKey: 'userId',
-      onDelete: 'CASCADE'
+      onDelete: 'CASCADE',
     });
   };
   return Book;

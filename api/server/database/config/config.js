@@ -4,14 +4,12 @@ dotenv.config();
 
 export const development = {
   use_env_variable: 'DATABASE_DEV',
-  logging: false
+  logging: false,
 };
 export const test = {
   use_env_variable: 'DATABASE_TEST',
-  logging: false
+  logging: false,
 };
 export const production = {
-  use_env_variable: 'DATABASE_URL'
+  use_env_variable: 'DATABASE_URL',
 };
-
-

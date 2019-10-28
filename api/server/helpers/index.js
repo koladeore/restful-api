@@ -8,12 +8,12 @@ import findUser from './findUser';
 
 const { signupMessage } = message;
 
-export default { 
-    emptyBody,
-    responseMessage,
-    validators,
-    sendMail,
-    createToken,
-    signupMessage,
-    findUser
-}
+export default {
+  emptyBody,
+  responseMessage,
+  validators,
+  sendMail,
+  createToken,
+  signupMessage,
+  findUser,
+};

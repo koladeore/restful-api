@@ -1,7 +1,7 @@
 import userMock from './userMock';
-import bookMock from './bookMock'
+import bookMock from './bookMock';
 
 export default {
-    userMock,
-    bookMock
-}
+  userMock,
+  bookMock,
+};

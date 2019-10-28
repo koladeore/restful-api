@@ -4,8 +4,8 @@ import UserValidator from './UserValidator';
 import verifyToken from './verifyToken';
 
 export default {
-    UserValidator,
-    errorHandler,
-    BookValidator,
-    verifyToken
+  UserValidator,
+  errorHandler,
+  BookValidator,
+  verifyToken,
 };
