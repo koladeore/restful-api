@@ -1,5 +1,5 @@
 import express from 'express';
-import dotenv from 'dotenv';
+import passport from 'passport';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import router from './server/routes/index';
@@ -7,11 +7,22 @@ import cors from 'cors';
 import swaggerUi from 'swagger-ui-express';
 import YAML from 'yamljs';
 import path from 'path';
-
+import cookiesSession from 'cookie-session';
+import dotenv from 'dotenv';
 const app = express();
+import passportService from '../api/server/Services/passport';
 
+passportService;
 dotenv.config();
+app.use(cookiesSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [process.env.cookieKey]
+}));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(router);
 app.use(logger('dev'));
 const { PORT } = process.env;
 

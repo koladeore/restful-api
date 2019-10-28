@@ -57,6 +57,7 @@ class Users {
             return response.status(500).json({ message: error.message })
         }
     }
+    
 }
 
 export default Users;
