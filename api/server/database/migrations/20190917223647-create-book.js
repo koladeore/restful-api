@@ -4,16 +4,15 @@ module.exports = {
       id:
         {
           allowNull: false,
-          autoIncrement: true,
           primaryKey: true,
-          type: Sequelize.INTEGER,
+          type: Sequelize.UUID,
         },
       title: { allowNull: false, type: Sequelize.STRING },
       author: { allowNull: false, type: Sequelize.STRING },
       description: { allowNull: false, type: Sequelize.STRING },
       quantity: { allowNull: false, type: Sequelize.INTEGER },
       userId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         onDelete: 'CASCADE',
         references: { model: 'Users', key: 'id', as: 'userId' },
       },

@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import passport from 'passport';
 import { Strategy } from 'passport-google-oauth20';
-import models from '../database/models/user';
+import models from '../database/models';
 
 const { User } = models;
 
@@ -19,7 +19,7 @@ const passportService = () => {
 
   const Googlekey = { clientID: process.env.GOOGLE_CLIENT_ID, clientSecret: process.env.GOOGLE_CLIENT_SECRET, callbackURL: '/auth/google/callback' };
   passport.use(new Strategy(Googlekey, (accessToken, refreshToken, profile, done) => {
-    User.findOne({ where: { id: profile.id } })
+    User.findOne({ where: { socialId: profile.id } })
       .then((existingUser) => {
         console.log(existingUser);
         if (existingUser) {
@@ -27,7 +27,12 @@ const passportService = () => {
           done(null, existingUser);
         } else {
           // we don't have your record make another one
-          User.create({ id: profile.id })
+          const {
+            id, displayName, name: { givenName }, emails: [googleEmail]
+          } = profile;
+          User.create({
+            socialId: id, name: displayName, username: givenName, email: googleEmail.value, verified: googleEmail.verified, password: ''
+          })
             .then((user) => done(null, user));
         }
       });

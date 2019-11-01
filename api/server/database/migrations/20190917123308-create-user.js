@@ -4,10 +4,13 @@ module.exports = {
       id:
         {
           allowNull: false,
-          autoIncrement: true,
           primaryKey: true,
-          type: Sequelize.INTEGER,
+          type: Sequelize.UUID,
         },
+      socialId: {
+        type: Sequelize.STRING,
+        allowNull: true
+      }, 
       name:
         {
           allowNull: false,

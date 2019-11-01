@@ -8,9 +8,9 @@ import YAML from 'yamljs';
 import path from 'path';
 import cookiesSession from 'cookie-session';
 import dotenv from 'dotenv';
+import debug from 'debug';
 import router from './server/routes/index';
 import passportService from './server/services/passport';
-import debug from 'debug';
 
 const log = debug('dev');
 const app = express();

@@ -15,5 +15,5 @@ const logoutUser = (req, res) => {
 export default {
   authenticateUser,
   callback,
-  logoutUser,
+  logoutUser
 };
