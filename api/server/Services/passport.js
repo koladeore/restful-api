@@ -4,6 +4,7 @@ import { Strategy } from 'passport-google-oauth20';
 import models from '../database/models';
 
 const { User } = models;
+const SocialPassword = process.env.SocialPassword;
 
 dotenv.config();
 const passportService = () => {
@@ -21,7 +22,6 @@ const passportService = () => {
   passport.use(new Strategy(Googlekey, (accessToken, refreshToken, profile, done) => {
     User.findOne({ where: { socialId: profile.id } })
       .then((existingUser) => {
-        console.log(existingUser);
         if (existingUser) {
           // we already have ur record
           done(null, existingUser);
@@ -31,14 +31,16 @@ const passportService = () => {
             id, displayName, name: { givenName }, emails: [googleEmail]
           } = profile;
           User.create({
-            socialId: id, name: displayName, username: givenName, email: googleEmail.value, verified: googleEmail.verified, password: ''
+            socialId: id,
+            name: displayName,
+            username: givenName,
+            email: googleEmail.value,
+            verified: googleEmail.verified,
+            password: SocialPassword
           })
             .then((user) => done(null, user));
         }
       });
-    console.log('access token', accessToken);
-    console.log('refresh token', refreshToken);
-    console.log('profile:', profile);
   }));
 };
 

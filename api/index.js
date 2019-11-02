@@ -10,7 +10,7 @@ import cookiesSession from 'cookie-session';
 import dotenv from 'dotenv';
 import debug from 'debug';
 import router from './server/routes/index';
-import passportService from './server/services/passport';
+import passportService from './server/Services/passport';
 
 const log = debug('dev');
 const app = express();

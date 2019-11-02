@@ -19,7 +19,6 @@ describe('TEST User', () => {
         .post(SIGN_UP)
         .send(getUser)
         .end((error, response) => {
-          console.log(response.body);
           expect(response).to.have.status('201');
           expect(response.body).to.be.an('object');
           expect(response.body).to.haveOwnProperty('data');

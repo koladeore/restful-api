@@ -10,7 +10,7 @@ module.exports = {
       socialId: {
         type: Sequelize.STRING,
         allowNull: true
-      }, 
+      },
       name:
         {
           allowNull: false,
