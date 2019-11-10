@@ -1,29 +1,30 @@
 import express from 'express';
-import passport from 'passport';
+// import passport from 'passport';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import swaggerUi from 'swagger-ui-express';
 import YAML from 'yamljs';
 import path from 'path';
-import cookiesSession from 'cookie-session';
+// import cookiesSession from 'cookie-session';
 import dotenv from 'dotenv';
 import debug from 'debug';
 import router from './server/routes/index';
-import passportService from './server/Services/passport';
+// import passportService from './server/Services/passport';
+import setPassportMiddleware from '../api/server/Services/strategy';
 
 const log = debug('dev');
 const app = express();
 
-passportService();
+// passportService();
 dotenv.config();
-app.use(cookiesSession({
-  maxAge: 30 * 24 * 60 * 60 * 1000,
-  keys: [process.env.cookieKey],
-}));
+// app.use(cookiesSession({
+//   maxAge: 30 * 24 * 60 * 60 * 1000,
+//   keys: [process.env.cookieKey],
+// }));
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 app.use(router);
 app.use(logger('dev'));
@@ -44,6 +45,8 @@ app.get('/', (req, res) => {
 
 const documentation = YAML.load(path.join(__dirname, '../docs/swagger.yaml'));
 documentation.servers[0].url = process.env.SERVER_URL;
+
+setPassportMiddleware(app);
 
 // setup swagger documentation
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(documentation));
