@@ -18,10 +18,10 @@
 //       });
 //   });
 
-//   const Googlekey = { 
-//     clientID: process.env.GOOGLE_CLIENT_ID, 
-//     clientSecret: process.env.GOOGLE_CLIENT_SECRET, 
-//     callbackURL: '/auth/google/callback' 
+//   const Googlekey = {
+//     clientID: process.env.GOOGLE_CLIENT_ID,
+//     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+//     callbackURL: '/auth/google/callback'
 //   };
 //   passport.use(new Strategy(Googlekey, (accessToken, refreshToken, profile, done) => {
 //     User.findOne({ where: { socialId: profile.id } })

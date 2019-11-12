@@ -11,7 +11,7 @@ import dotenv from 'dotenv';
 import debug from 'debug';
 import router from './server/routes/index';
 // import passportService from './server/Services/passport';
-import setPassportMiddleware from '../api/server/Services/strategy';
+import setPassportMiddleware from './server/Services/strategy';
 
 const log = debug('dev');
 const app = express();
