@@ -8,7 +8,6 @@ const { responseMessage, findUser } = helpers;
 
 export default (request, response, next) => {
   const token = request.headers.authorization || request.query.token;
-
   if (token) {
     jwt.verify(token, process.env.JWT_KEY, async (error, decoded) => {
       if (error) {

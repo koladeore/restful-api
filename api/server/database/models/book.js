@@ -18,6 +18,7 @@ export default (sequelize, DataTypes) => {
       },
       quantity: { type: DataTypes.INTEGER },
       userId: {
+        allowNull: false,
         type: DataTypes.UUID,
         references: { model: 'User', key: 'id', as: 'userId' },
       },

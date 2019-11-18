@@ -5,7 +5,7 @@ import middlewares from '../middlewares';
 // import socialController from '../controller/social';
 import socialController from '../controller/socialMedia';
 
-const BASE_URL = '/api/users';
+const BASE_URL = '/users';
 const { signUp, signIn, verifyUser } = userController;
 // const { callback, logoutUser, currentUser } = socialController;
 const { UserValidator: { signUpValidator, signInValidator }, verifyToken } = middlewares;

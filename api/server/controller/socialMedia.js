@@ -17,7 +17,7 @@ const socialController = async (req, res) => {
     verified: user.verified,
     password: SocialPassword
   };
-  
+
   try {
     let dbUser = await User.findOne({
       where: { socialId: user.socialId }
@@ -31,14 +31,15 @@ const socialController = async (req, res) => {
       username: dbUser.username,
       email: dbUser.email,
       verified: dbUser.verified,
-      token: authHelper({ socialId: user.socialId })
+      token: authHelper({ id: dbUser.id })
     };
-    const token = authHelper(payload);
+    // const token = authHelper(payload);
     // return res.send(`${req.user}?token=${token}`);
     return res.status(200).json({
       success: true,
       message: 'User successfully login',
-      data: payload, token
+      data: payload,
+      // token
     });
     // return res.redirect('https://twitter.com/ore_kolade');
   } catch (e) {

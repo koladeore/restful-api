@@ -1,5 +1,6 @@
 export default (sequelize, DataTypes) => {
-  const User = sequelize.define('User',
+  const User = sequelize.define(
+    'User',
     {
       id: {
         allowNull: false,
@@ -11,25 +12,27 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING
       },
       name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING
       },
       username: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING
       },
       email: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING
       },
       password: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING
       },
       verified: {
-        type: DataTypes.BOOLEAN,
-      },
-    }, {});
+        type: DataTypes.BOOLEAN
+      }
+    },
+    {}
+  );
   User.associate = (models) => {
     User.hasMany(models.Book, {
       foreignKey: 'userId',
-      onDelete: 'CASCADE',
+      onDelete: 'CASCADE'
     });
   };
   return User;

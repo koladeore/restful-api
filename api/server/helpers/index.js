@@ -5,6 +5,7 @@ import message from './message';
 import validators from './validator';
 import createToken from './createToken';
 import findUser from './findUser';
+import authHelper from './authHelper';
 
 const { signupMessage } = message;
 
@@ -16,4 +17,5 @@ export default {
   createToken,
   signupMessage,
   findUser,
+  authHelper
 };

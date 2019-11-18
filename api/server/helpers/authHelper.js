@@ -5,9 +5,9 @@ const secret = process.env.SECRET_KEY;
 
 config();
 
-const generateToken = (payload) => {
-  const token = jwt.sign({ ...payload }, secret, { expiresIn: '7 days' });
+const authHelper = (payload) => {
+  const token = jwt.sign(payload, secret, { expiresIn: '7 days' });
   return token;
 };
 
-export default generateToken;
+export default authHelper;

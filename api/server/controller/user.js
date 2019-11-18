@@ -2,7 +2,9 @@ import model from '../database/models';
 import helpers from '../helpers';
 
 const { User } = model;
-const { createToken, signupMessage, sendMail } = helpers;
+const {
+  createToken, signupMessage, sendMail, authHelper
+} = helpers;
 
 class Users {
   static async signUp(req, res) {
@@ -36,9 +38,20 @@ class Users {
   static async signIn(req, res) {
     try {
       const { email, password } = req.body;
-      const finduser = await User.findOne({ where: { email, password } });
-      if (finduser) {
-        return res.status(200).json({ success: true, message: 'User successfully login', data: finduser });
+      const findUser = await User.findOne({ where: { email, password } });
+      if (findUser) {
+        const { id,email,password,verified } = findUser
+        const payload = {
+          id,
+          email,
+          verified,
+          token: authHelper({id})
+        };
+        return res.status(200).json({
+          success: true,
+          message: 'User successfully login',
+          data: payload
+        });
       }
       return res.status(400).json({
         message: 'wrong email address',

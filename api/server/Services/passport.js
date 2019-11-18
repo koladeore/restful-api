@@ -27,7 +27,6 @@
 //     User.findOne({ where: { socialId: profile.id } })
 //       .then((existingUser) => {
 //         if (existingUser) {
-//           console.log(profile);
 //           // we already have ur record
 //           done(null, existingUser);
 //         } else {
