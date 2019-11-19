@@ -9,12 +9,12 @@ const { responseMessage, findUser } = helpers;
 export default (request, response, next) => {
   const token = request.headers.authorization || request.query.token;
   if (token) {
-    jwt.verify(token, process.env.JWT_KEY, async (error, decoded) => {
+    jwt.verify(token, process.env.JWT_KEY, async (error, success) => {
       if (error) {
         const message = (error.name === 'TokenExpiredError') ? 'token expired' : 'invalid token';
         return responseMessage(response, 401, { message });
       }
-      const user = await findUser(decoded.id, response);
+      const user = await findUser(success.id, response);
       if (!user) return responseMessage(response, 404, { message: 'user not found' });
       request.userData = user;
       return next();

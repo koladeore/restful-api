@@ -40,12 +40,12 @@ class Users {
       const { email, password } = req.body;
       const findUser = await User.findOne({ where: { email, password } });
       if (findUser) {
-        const { id,email,password,verified } = findUser
+        const { id, verified } = findUser;
         const payload = {
           id,
-          email,
+          email: findUser.email,
           verified,
-          token: authHelper({id})
+          token: authHelper({ id })
         };
         return res.status(200).json({
           success: true,

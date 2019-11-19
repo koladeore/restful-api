@@ -3,10 +3,10 @@ import responseMessage from './responseMessage';
 
 const { User } = models;
 
-const findUser = async (param, response) => {
+const findUser = async (id, response) => {
   try {
     const user = await User.findOne({
-      where: { id: param },
+      where: { id },
     });
     if (!user) return responseMessage(response, 404, { message: 'user does not exist ' });
     return user;

@@ -17,7 +17,6 @@ const socialController = async (req, res) => {
     verified: user.verified,
     password: SocialPassword
   };
-
   try {
     let dbUser = await User.findOne({
       where: { socialId: user.socialId }
@@ -25,13 +24,16 @@ const socialController = async (req, res) => {
     if (!dbUser) {
       dbUser = await User.create(userData);
     }
+    const {
+      socialId, name, username, email, verified, id
+    } = dbUser;
     const payload = {
-      socialId: dbUser.socialId,
-      name: dbUser.name,
-      username: dbUser.username,
-      email: dbUser.email,
-      verified: dbUser.verified,
-      token: authHelper({ id: dbUser.id })
+      socialId,
+      name,
+      username,
+      email,
+      verified,
+      token: authHelper({ id })
     };
     // const token = authHelper(payload);
     // return res.send(`${req.user}?token=${token}`);
