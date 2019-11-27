@@ -1,17 +1,23 @@
 export default {
   bookData: {
-    title: 'fivesecondsrule',
-    author: 'blessing',
-    description: 'the five seconds book of all time',
-    quantity: 10,
+    title: 'leadership',
+    author: 'david oyedepo',
+    description: 'book that give insight on leadership',
+    quantity: 12,
   },
   bookUser: {
-    name: 'kolade',
-    username: 'suleiman',
-    email: 'monday@gmail.com',
-    password: 'susannyy123',
+    name: 'Eden',
+    username: 'favour',
+    email: 'kingsley@gmail.com',
+    password: 'password123',
   },
   bookUpdate: {
+    title: 'eat right',
+    author: 'titilayo',
+    description: 'how to eat right everyday',
+    quantity: 11,
+  },
+  bookDelete: {
     title: 'eat right',
     author: 'titilayo',
     description: 'how to eat right everyday',

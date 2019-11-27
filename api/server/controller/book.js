@@ -28,14 +28,23 @@ class Books {
 
   static async list(req, res) {
     try {
-      const findBook = await findAllBook();
-      if (findBook.length < 1) {
+      const { search } = req.query;
+      const bookFind = await findAllBook(search);
+      if (!bookFind) {
+        if (search !== '') {
+          return res.status(400).json({
+            status: 400,
+            message: 'book not found'
+          });
+        }
         return res.status(200).json({
           message: 'you do not have any book yet you can create'
         });
       }
       return res.status(200).json({
-        data: findBook
+        status: 200,
+        message: 'book found',
+        data: bookFind
       });
     } catch (error) {
       return res.status(500).json({ status: 500, message: error });

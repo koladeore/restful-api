@@ -4,8 +4,8 @@ import mockData from './mockData';
 import app from '../api';
 
 const API_VERSION = '/api/v1';
-const SIGN_UP = `${API_VERSION}/api/users/signup`;
-const SIGN_IN = `${API_VERSION}/api/users/signin`;
+const SIGN_UP = `${API_VERSION}/users/signup`;
+const SIGN_IN = `${API_VERSION}/users/signin`;
 
 const { userMock: { getUser, signUser } } = mockData;
 

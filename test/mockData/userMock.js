@@ -1,13 +1,13 @@
 export default {
   getUser: {
-    name: 'orezi',
-    username: 'joseph',
-    email: 'samuel@gmail.com',
-    password: 'password',
+    name: 'daniel',
+    username: 'matthew',
+    email: 'ruth@gmail.com',
+    password: 'password123',
   },
   signUser: {
-    email: 'samuel@gmail.com',
-    password: 'password',
+    email: 'kingsley@gmail.com',
+    password: 'password123',
   },
 
 };
