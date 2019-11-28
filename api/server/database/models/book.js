@@ -16,6 +16,9 @@ export default (sequelize, DataTypes) => {
       description: {
         type: DataTypes.STRING,
       },
+      imageName: {
+        type: DataTypes.TEXT,
+      },
       quantity: { type: DataTypes.INTEGER },
       userId: {
         allowNull: false,

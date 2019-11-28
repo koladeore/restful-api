@@ -1,4 +1,5 @@
 import model from '../database/models';
+import cloudUpload from '../Services/configCloudinary';
 import findAllBook from '../Services/bookServices';
 
 const { Book } = model;
@@ -7,14 +8,18 @@ class Books {
   static async create(req, res) {
     try {
       const {
-        title, author, description, quantity
+        title, author, description, quantity, imageName
       } = req.body;
       const { id } = req.userData;
+      if (imageName) {
+        await cloudUpload(imageName);
+      }
       const bookCreate = await Book.create({
         title,
         author,
         description,
         quantity,
+        imageName,
         userId: id
       });
       return res.status(201).json({
@@ -54,16 +59,19 @@ class Books {
   static async modify(req, res) {
     try {
       const {
-        title, author, description, quantity
+        title, author, description, quantity, imageName
       } = req.body;
       const { bookId } = req.params;
-      const updateBook = await Book.update({
-        title,
-        author,
-        description,
-        quantity
-      },
-      { returning: true, where: { id: bookId } });
+      const updateBook = await Book.update(
+        {
+          title,
+          author,
+          description,
+          quantity,
+          imageName
+        },
+        { returning: true, where: { id: bookId } }
+      );
       return res.status(200).json({
         message: 'Book successfully updated',
         data: updateBook[1]
@@ -104,12 +112,14 @@ class Books {
       const checkBook = await Book.findOne({
         where: { id: bookId }
       });
-      if (!checkBook) { return res.status(400).json({ message: 'Book Not Found' }); }
+      if (!checkBook) {
+        return res.status(400).json({ message: 'Book Not Found' });
+      }
       await Book.destroy({
         where: { id: bookId }
       });
       return res.status(200).json({
-        message: 'Book successfully deleted',
+        message: 'Book successfully deleted'
       });
     } catch (error) {
       return res.status(500).json({

@@ -43,6 +43,9 @@ app.get('/', (req, res) => {
   res.status(200).send('The api is working');
 });
 
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static('uploads'));
+
 const documentation = YAML.load(path.join(__dirname, '../docs/swagger.yaml'));
 documentation.servers[0].url = process.env.SERVER_URL;
 

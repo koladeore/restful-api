@@ -11,6 +11,7 @@ export const up = (queryInterface) => queryInterface.bulkInsert(
       author: 'david oyedepo',
       description: 'book that give insight on leadership',
       quantity: 12,
+      imageName: 'https://res.cloudinary.com/dklye5zd6/image/upload/v1574891148/book2_q0u9wm.jpg',
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -21,6 +22,7 @@ export const up = (queryInterface) => queryInterface.bulkInsert(
       author: 'samuel victor',
       description: 'book that give insight on grace',
       quantity: 20,
+      imageName: 'https://res.cloudinary.com/dklye5zd6/image/upload/v1574891148/book2_q0u9wm.jpg',
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -31,6 +33,7 @@ export const up = (queryInterface) => queryInterface.bulkInsert(
       author: 'moses ode',
       description: 'book that give insight on empowerment',
       quantity: 22,
+      imageName: 'https://res.cloudinary.com/dklye5zd6/image/upload/v1574891148/book2_q0u9wm.jpg',
       createdAt: new Date(),
       updatedAt: new Date()
     }

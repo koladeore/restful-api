@@ -32,12 +32,14 @@ describe('book for Users ', () => {
         .set('authorization', authToken)
         .send(bookData)
         .end((error, response) => {
+          // console.log(response);
           expect(response).to.have.status('201');
           expect(response.body).to.be.an('object');
           expect(response.body.data).to.have.property('title');
           expect(response.body.data).to.have.property('author');
           expect(response.body.data).to.have.property('description');
           expect(response.body.data).to.have.property('quantity');
+          expect(response.body.data).to.have.property('imageName');
           done();
         });
     });
@@ -55,6 +57,7 @@ describe('book for Users ', () => {
           expect(response.body.data[0]).to.have.property('author');
           expect(response.body.data[0]).to.have.property('description');
           expect(response.body.data[0]).to.have.property('quantity');
+          expect(response.body.data[0]).to.have.property('imageName');
           done();
         });
     });
