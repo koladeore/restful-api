@@ -3,5 +3,11 @@
         "googleusercontent",
         "kedoqbcs",
         "titilayo"
-    ]
+    ],
+    "editor.formatOnType": true,
+    "editor.fontFamily": "sans-serif",
+    "markdown.preview.fontSize": 12,
+    "markdown.preview.lineHeight": 2,
+    "editor.find.addExtraSpaceOnTop": false,
+    "editor.fontSize": 14
 }
