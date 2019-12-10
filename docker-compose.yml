@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  dev:
+    container_name: restful-api
+    image: restful-api
+    volumes:
+      - . :/app
+    env_file:   
+      - ./.env 
+    environment:
+      PORT: 3000
+      DATA_URL_DEV: ${DOCKER_DB_URL}
+      NODE_ENV: development
+    command: sh -c "npm run db:ready && npm run dev" 
+    depends_on: 
+      - db
+      - cache
+             
+  db:
+    image: postgres
+    ports:
+      - 3000:3000
+    env_file: 
+      - ./.env
+    environment: 
+      POSTGRES_USER: ${DOCKER_DB_USER}
+      POSTGRES_PASSWORD: ${DOCKER_DB_PASS}
+      POSTGRES_DB: ${DOCKER_DB}  
+
+  cache:
+    image: redis
+    ports: 
+      - 6379:6379
+    env_file: 
+      - ./.env
+    environment: 
+      REDIS_URL: ${REDIS_URL}    

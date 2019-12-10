@@ -11,9 +11,9 @@ const {
 } = redisHelper;
 const setBookToCache = async (findBook, search = '') => {
   if (search !== '') {
-    await setAsync(`book_${search}`, 5,JSON.stringify(findBook));
+    await setAsync(`book_${search}`, 5, JSON.stringify(findBook));
   } else {
-    await setAsync('book', 5,JSON.stringify(findBook));
+    await setAsync('book', 5, JSON.stringify(findBook));
   }
 };
 const getBookFromCache = async () => {
