@@ -16,12 +16,12 @@ WORKDIR /app
 COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
 
 # install dependencies
-RUN npm install --development --silent && mv node_modules ../
+RUN npm install
 
 # bundle app source
 COPY . .
 
-EXPOSE 3000
+EXPOSE 3000 5432
 
 # start app
 CMD [ "npm" , "run", "dev"]

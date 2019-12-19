@@ -4,14 +4,15 @@ services:
   dev:
     container_name: restful-api
     image: restful-api
-    volumes:
-      - . :/app
+    ports:
+      - 3000:8000
+    # volumes:
+    #   - . :/app
     env_file:   
       - ./.env 
     environment:
-      PORT: 3000
-      DATA_URL_DEV: ${DOCKER_DB_URL}
-      NODE_ENV: development
+      PORT: 8000
+      DATABASE_DEV: ${DOCKER_DB_URL}
     command: sh -c "npm run db:ready && npm run dev" 
     depends_on: 
       - db
@@ -20,14 +21,14 @@ services:
   db:
     image: postgres
     ports:
-      - 3000:3000
+      - 5432:5432
     env_file: 
       - ./.env
     environment: 
       POSTGRES_USER: ${DOCKER_DB_USER}
       POSTGRES_PASSWORD: ${DOCKER_DB_PASS}
-      POSTGRES_DB: ${DOCKER_DB}  
-
+      POSTGRES_DB: ${DOCKER_DB}
+      
   cache:
     image: redis
     ports: 
